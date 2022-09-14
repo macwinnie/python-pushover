@@ -10,7 +10,8 @@ from yoyo import step
 __depends__ = {}
 
 steps = [
-    step( """
+    step(
+        """
         CREATE TABLE po_messages (
             id           INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
             message      TEXT     NOT NULL,
@@ -26,5 +27,6 @@ steps = [
             created      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             confirmation DATETIME          DEFAULT NULL
         );
-    """ )
+    """
+    )
 ]

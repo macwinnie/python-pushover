@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Pushover API documentation</title>
+<meta name="description" content="Pushover Client installable by `pip install macwinnie_py_pushover_client`" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pushover</code></h1>
+</header>
+<section id="section-intro">
+<p>Pushover Client installable by <code>pip install macwinnie_py_pushover_client</code></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python3
+
+&#34;&#34;&#34;Pushover Client installable by `pip install macwinnie_py_pushover_client`&#34;&#34;&#34;
+
+import requests, os, json, datetime, pathlib
+
+
+class device:
+    &#34;&#34;&#34;Pushover Device&#34;&#34;&#34;
+
+    name = None
+
+    def __init__(self, name):
+        self.name = name
+
+
+class user:
+    &#34;&#34;&#34;Pushover User class&#34;&#34;&#34;
+
+    token = None
+    devices = []
+
+    def __init__(self, token, device=None):
+        self.token = token
+        if device != None:
+            self.devices.append(device)
+
+    def addDevice(self, name):
+        &#34;&#34;&#34;Method that adds a device to an user&#34;&#34;&#34;
+        self.devices.appen(name)
+
+
+class app:
+    &#34;&#34;&#34;Pushover App class&#34;&#34;&#34;
+
+    token = None
+
+    def __init__(self, token):
+        &#34;&#34;&#34;Each App that wants to send a Pushover Notification has to be registered and get an official token.&#34;&#34;&#34;
+        self.token = token
+
+
+class receipt:
+    &#34;&#34;&#34;Pushover receipt handling class&#34;&#34;&#34;
+
+    receipt = None
+    app = None
+    apiUrl = None
+    info = None
+
+    def __init__(self, receipt, app):
+        self.apiUrl = pushover.baseUrl.format(
+            location=&#34;receipts/{receipt}.json?token={app}&#34;.format(receipt=receipt, app=app)
+        )
+
+    def setInfo(self, data):
+        &#34;&#34;&#34;Decrypt and store JSON data from receipt&#34;&#34;&#34;
+        self.info = json.loads(data)
+
+
+class pushover:
+    &#34;&#34;&#34;Class that handles Pushover actions&#34;&#34;&#34;
+
+    session = None
+    userAgent = &#34;curl/7.54&#34;
+
+    db = None
+    colNames = None
+    dbTable = &#34;po_messages&#34;
+
+    apiVersion = 1
+    baseUrl = &#34;https://api.pushover.net/{version}/&#34;.format(version=str(apiVersion))
+    baseUrl += &#34;{location}&#34;
+
+    app = None
+    users = []
+    receipts = []
+
+    def __init__(self, app_tkn=None, user_tkn=None):
+        &#34;&#34;&#34;ENV variables `PUSHOVER_APP` (API token) and `PUSHOVER_USERS` (JSON List of User token like `[&#34;asdfghj123456&#34;, &#34;yxcvbnm098765&#34;]`) can be used.&#34;&#34;&#34;
+        self.session = requests.session()
+        self.session.headers = {&#34;User-Agent&#34;: self.userAgent}
+        if app_tkn != None:
+            self.app = app(app_tkn)
+        else:
+            app_tkn = os.getenv(&#34;PUSHOVER_APP&#34;)
+            if app_tkn == None:
+                app_tkn = input(&#34;{d}: &#34;.format(d=&#34;Input your API token: &#34;))
+            self.app = app(app_tkn)
+        if user_tkn != None:
+            self.users.append(user_tkn)
+        else:
+            user_tkn = os.getenv(&#34;PUSHOVER_USERS&#34;)
+            if user_tkn == None:
+                user_tkn = input(&#34;{d}: &#34;.format(d=&#34;Input your User token: &#34;))
+                self.users.append(user(user_tkn))
+            else:
+                user_tkn = json.loads(user_tkn)
+                for u in user_tkn:
+                    self.users.append(user(u))
+
+    def setDB(self, db=None):
+        &#34;&#34;&#34;Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
+        Example of how such a Database object has to look like can be seen in [macwinnie_sqlite3](https://macwinnie.github.io/py-sqlite3) which can seemlessly be used.
+        ENV variable `PUSHOVER_SQLITE_FILENAME` (default `database.sqlite`) can be used to rename the default DB SQLite file.
+        Database object needs to implement ability of usage of yoyo-migrations through method `migrate`.&#34;&#34;&#34;
+        dbMigrationPath = &#34;{}/{}&#34;.format(
+            os.path.dirname(os.path.abspath(__file__)), &#34;db_migrations&#34;
+        )
+        if db == None:
+            from macwinnie_sqlite3 import SQLite
+
+            self.db = macwinnie_sqlite3.SQLite(
+                &#34;{}/{}&#34;.format(
+                    os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+                ),
+                dbMigrationPath,
+            )
+        else:
+            db.migrate(dbMigrationPath)
+            self.db = db
+        self.db.startAction()
+        sql = &#34;SELECT name FROM pragma_table_info( &#39;{dbTable}&#39; ) ORDER BY cid;&#34;.format(
+            dbTable=self.dbTable
+        )
+        self.db.execute(sql)
+        self.colNames = [n[0] for n in db.fetchall()]
+        self.db.close()
+
+    def addUser(self, user_tkn, device=None):
+        &#34;&#34;&#34;Add an user who should be informed&#34;&#34;&#34;
+        self.user.append(user(user(user_tkn, device)))
+
+    def messageAll(
+        self,
+        message,
+        title=None,
+        priority=0,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Method to send a message to all defined users&#34;&#34;&#34;
+        for user in self.users:
+            self.message(
+                message=message,
+                user=user,
+                title=title,
+                priority=2,
+                expire=expire,
+                retry=retry,
+                device=device,
+                sound=sound,
+                url=url,
+                url_title=url_title,
+                attachment=attachment,
+                timestamp=timestamp,
+            )
+
+    def sendMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a regular message to all users&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def sendPrioMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a prio message to all users (prio 1)&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            priority=1,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def sendConfirmPrioMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a prio message to all users, that has to be confirmed (high prio, prio 2)&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            priority=2,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def message(
+        self,
+        message,
+        user,
+        title=None,
+        priority=0,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Method to publish a message per device&#34;&#34;&#34;
+        apiUrl = self.baseUrl.format(location=&#34;messages.json&#34;)
+
+        data = {&#34;token&#34;: self.app.token, &#34;user&#34;: user.token, &#34;message&#34;: message}
+
+        if title != None:
+            data[&#34;title&#34;] = title
+        if priority != 0:
+            data[&#34;priority&#34;] = priority
+            if expire == None:
+                expire = 10800  # maximum value: 10800
+            if retry == None:
+                retry = 60  # minimum value: 30
+        if expire != None:
+            data[&#34;expire&#34;] = expire
+        if retry != None:
+            data[&#34;retry&#34;] = retry
+        if device != None:
+            data[&#34;device&#34;] = device
+        if sound != None:
+            data[&#34;sound&#34;] = sound
+        if url != None:
+            data[&#34;url&#34;] = url
+        if url_title != None:
+            data[&#34;url_title&#34;] = url_title
+        if attachment != None:
+            data[&#34;attachment&#34;] = attachment
+        if timestamp != None:
+            data[&#34;timestamp&#34;] = timestamp
+
+        if self.db != None:
+            db_data = {}
+            for key in data:
+                if key in self.colNames:
+                    db_data[key] = data[key]
+            sql = &#34;INSERT INTO {dbTable} ({colNames}) VALUES ({valPh});&#34;.format(
+                dbTable=self.dbTable,
+                colNames=&#34;, &#34;.join(db_data.keys()),
+                valPh=&#34;, &#34;.join([&#34;?&#34;] * len(db_data)),
+            )
+            self.db.fullExecute(sql, list(db_data.values()))
+            db_id = self.db.lastrowid()
+
+        rsp = self.session.post(
+            apiUrl, data=json.dumps(data), headers={&#34;content-type&#34;: &#34;application/json&#34;}
+        )
+
+        if self.db != None:
+            sql = &#34;UPDATE {dbTable} SET api_rc = ? WHERE id = ?;&#34;.format(dbTable=self.dbTable)
+            self.db.fullExecute(sql, [rsp.status_code, db_id])
+
+        if rsp.status_code == 200:
+            data = json.loads(rsp.text)
+            if self.db != None:
+                if &#34;receipt&#34; in data:
+                    self.receipts.append(receipt(data[&#34;receipt&#34;], self.app.token))
+                    sql = &#34;UPDATE {dbTable} SET receipt = ? WHERE id = ?;&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(sql, [data[&#34;receipt&#34;], db_id])
+
+    def checkUnconfirmedPrio(self):
+        &#34;&#34;&#34;When a DB is defined for Pushover client, this method should run on a reccuring period to fetch and update confirmation dates for PRIO 2 messages&#34;&#34;&#34;
+        sql = &#34;SELECT * FROM {dbTable} WHERE priority = 2 AND receipt IS NOT NULL AND confirmation IS NULL;&#34;.format(
+            dbTable=self.dbTable
+        )
+        self.db.startAction()
+        self.db.execute(sql)
+        allUnconfirmed = self.db.fetchallNamed()
+        self.db.close()
+        for uc in allUnconfirmed:
+            apiUrl = self.baseUrl.format(
+                location=&#34;receipts/{receipt}.json?token={token}&#34;.format(
+                    receipt=uc[&#34;receipt&#34;], token=self.app.token
+                )
+            )
+            rsp = self.session.get(apiUrl)
+            if rsp.status_code == 200:
+                data = json.loads(rsp.text)
+                if data[&#34;acknowledged&#34;] == True:
+                    confirmationDate = datetime.datetime.fromtimestamp(data[&#34;acknowledged_at&#34;])
+                    sql = &#34;UPDATE {dbTable} SET receipt_info = ?, confirmation = ? WHERE id = ?&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(
+                        sql,
+                        [
+                            json.dumps(data, indent=4),
+                            confirmationDate.strftime(&#34;%Y-%m-%d %H:%M:%S&#34;),
+                            uc[&#34;id&#34;],
+                        ],
+                    )
+                else:
+                    sql = &#34;UPDATE {dbTable} SET receipt_info = ? WHERE id = ?&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(sql, [json.dumps(data, indent=4), uc[&#34;id&#34;]])</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pushover.app"><code class="flex name class">
+<span>class <span class="ident">app</span></span>
+<span>(</span><span>token)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pushover App class</p>
+<p>Each App that wants to send a Pushover Notification has to be registered and get an official token.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class app:
+    &#34;&#34;&#34;Pushover App class&#34;&#34;&#34;
+
+    token = None
+
+    def __init__(self, token):
+        &#34;&#34;&#34;Each App that wants to send a Pushover Notification has to be registered and get an official token.&#34;&#34;&#34;
+        self.token = token</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pushover.app.token"><code class="name">var <span class="ident">token</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="Pushover.device"><code class="flex name class">
+<span>class <span class="ident">device</span></span>
+<span>(</span><span>name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pushover Device</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class device:
+    &#34;&#34;&#34;Pushover Device&#34;&#34;&#34;
+
+    name = None
+
+    def __init__(self, name):
+        self.name = name</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pushover.device.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="Pushover.pushover"><code class="flex name class">
+<span>class <span class="ident">pushover</span></span>
+<span>(</span><span>app_tkn=None, user_tkn=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class that handles Pushover actions</p>
+<p>ENV variables <code>PUSHOVER_APP</code> (API token) and <code>PUSHOVER_USERS</code> (JSON List of User token like <code>["asdfghj123456", "yxcvbnm098765"]</code>) can be used.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class pushover:
+    &#34;&#34;&#34;Class that handles Pushover actions&#34;&#34;&#34;
+
+    session = None
+    userAgent = &#34;curl/7.54&#34;
+
+    db = None
+    colNames = None
+    dbTable = &#34;po_messages&#34;
+
+    apiVersion = 1
+    baseUrl = &#34;https://api.pushover.net/{version}/&#34;.format(version=str(apiVersion))
+    baseUrl += &#34;{location}&#34;
+
+    app = None
+    users = []
+    receipts = []
+
+    def __init__(self, app_tkn=None, user_tkn=None):
+        &#34;&#34;&#34;ENV variables `PUSHOVER_APP` (API token) and `PUSHOVER_USERS` (JSON List of User token like `[&#34;asdfghj123456&#34;, &#34;yxcvbnm098765&#34;]`) can be used.&#34;&#34;&#34;
+        self.session = requests.session()
+        self.session.headers = {&#34;User-Agent&#34;: self.userAgent}
+        if app_tkn != None:
+            self.app = app(app_tkn)
+        else:
+            app_tkn = os.getenv(&#34;PUSHOVER_APP&#34;)
+            if app_tkn == None:
+                app_tkn = input(&#34;{d}: &#34;.format(d=&#34;Input your API token: &#34;))
+            self.app = app(app_tkn)
+        if user_tkn != None:
+            self.users.append(user_tkn)
+        else:
+            user_tkn = os.getenv(&#34;PUSHOVER_USERS&#34;)
+            if user_tkn == None:
+                user_tkn = input(&#34;{d}: &#34;.format(d=&#34;Input your User token: &#34;))
+                self.users.append(user(user_tkn))
+            else:
+                user_tkn = json.loads(user_tkn)
+                for u in user_tkn:
+                    self.users.append(user(u))
+
+    def setDB(self, db=None):
+        &#34;&#34;&#34;Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
+        Example of how such a Database object has to look like can be seen in [macwinnie_sqlite3](https://macwinnie.github.io/py-sqlite3) which can seemlessly be used.
+        ENV variable `PUSHOVER_SQLITE_FILENAME` (default `database.sqlite`) can be used to rename the default DB SQLite file.
+        Database object needs to implement ability of usage of yoyo-migrations through method `migrate`.&#34;&#34;&#34;
+        dbMigrationPath = &#34;{}/{}&#34;.format(
+            os.path.dirname(os.path.abspath(__file__)), &#34;db_migrations&#34;
+        )
+        if db == None:
+            from macwinnie_sqlite3 import SQLite
+
+            self.db = macwinnie_sqlite3.SQLite(
+                &#34;{}/{}&#34;.format(
+                    os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+                ),
+                dbMigrationPath,
+            )
+        else:
+            db.migrate(dbMigrationPath)
+            self.db = db
+        self.db.startAction()
+        sql = &#34;SELECT name FROM pragma_table_info( &#39;{dbTable}&#39; ) ORDER BY cid;&#34;.format(
+            dbTable=self.dbTable
+        )
+        self.db.execute(sql)
+        self.colNames = [n[0] for n in db.fetchall()]
+        self.db.close()
+
+    def addUser(self, user_tkn, device=None):
+        &#34;&#34;&#34;Add an user who should be informed&#34;&#34;&#34;
+        self.user.append(user(user(user_tkn, device)))
+
+    def messageAll(
+        self,
+        message,
+        title=None,
+        priority=0,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Method to send a message to all defined users&#34;&#34;&#34;
+        for user in self.users:
+            self.message(
+                message=message,
+                user=user,
+                title=title,
+                priority=2,
+                expire=expire,
+                retry=retry,
+                device=device,
+                sound=sound,
+                url=url,
+                url_title=url_title,
+                attachment=attachment,
+                timestamp=timestamp,
+            )
+
+    def sendMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a regular message to all users&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def sendPrioMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a prio message to all users (prio 1)&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            priority=1,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def sendConfirmPrioMessage(
+        self,
+        message,
+        title=None,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Use `messageAll` and send a prio message to all users, that has to be confirmed (high prio, prio 2)&#34;&#34;&#34;
+        self.messageAll(
+            message=message,
+            title=title,
+            priority=2,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )
+
+    def message(
+        self,
+        message,
+        user,
+        title=None,
+        priority=0,
+        expire=None,
+        retry=None,
+        device=None,
+        sound=None,
+        url=None,
+        url_title=None,
+        attachment=None,
+        timestamp=None,
+    ):
+        &#34;&#34;&#34;Method to publish a message per device&#34;&#34;&#34;
+        apiUrl = self.baseUrl.format(location=&#34;messages.json&#34;)
+
+        data = {&#34;token&#34;: self.app.token, &#34;user&#34;: user.token, &#34;message&#34;: message}
+
+        if title != None:
+            data[&#34;title&#34;] = title
+        if priority != 0:
+            data[&#34;priority&#34;] = priority
+            if expire == None:
+                expire = 10800  # maximum value: 10800
+            if retry == None:
+                retry = 60  # minimum value: 30
+        if expire != None:
+            data[&#34;expire&#34;] = expire
+        if retry != None:
+            data[&#34;retry&#34;] = retry
+        if device != None:
+            data[&#34;device&#34;] = device
+        if sound != None:
+            data[&#34;sound&#34;] = sound
+        if url != None:
+            data[&#34;url&#34;] = url
+        if url_title != None:
+            data[&#34;url_title&#34;] = url_title
+        if attachment != None:
+            data[&#34;attachment&#34;] = attachment
+        if timestamp != None:
+            data[&#34;timestamp&#34;] = timestamp
+
+        if self.db != None:
+            db_data = {}
+            for key in data:
+                if key in self.colNames:
+                    db_data[key] = data[key]
+            sql = &#34;INSERT INTO {dbTable} ({colNames}) VALUES ({valPh});&#34;.format(
+                dbTable=self.dbTable,
+                colNames=&#34;, &#34;.join(db_data.keys()),
+                valPh=&#34;, &#34;.join([&#34;?&#34;] * len(db_data)),
+            )
+            self.db.fullExecute(sql, list(db_data.values()))
+            db_id = self.db.lastrowid()
+
+        rsp = self.session.post(
+            apiUrl, data=json.dumps(data), headers={&#34;content-type&#34;: &#34;application/json&#34;}
+        )
+
+        if self.db != None:
+            sql = &#34;UPDATE {dbTable} SET api_rc = ? WHERE id = ?;&#34;.format(dbTable=self.dbTable)
+            self.db.fullExecute(sql, [rsp.status_code, db_id])
+
+        if rsp.status_code == 200:
+            data = json.loads(rsp.text)
+            if self.db != None:
+                if &#34;receipt&#34; in data:
+                    self.receipts.append(receipt(data[&#34;receipt&#34;], self.app.token))
+                    sql = &#34;UPDATE {dbTable} SET receipt = ? WHERE id = ?;&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(sql, [data[&#34;receipt&#34;], db_id])
+
+    def checkUnconfirmedPrio(self):
+        &#34;&#34;&#34;When a DB is defined for Pushover client, this method should run on a reccuring period to fetch and update confirmation dates for PRIO 2 messages&#34;&#34;&#34;
+        sql = &#34;SELECT * FROM {dbTable} WHERE priority = 2 AND receipt IS NOT NULL AND confirmation IS NULL;&#34;.format(
+            dbTable=self.dbTable
+        )
+        self.db.startAction()
+        self.db.execute(sql)
+        allUnconfirmed = self.db.fetchallNamed()
+        self.db.close()
+        for uc in allUnconfirmed:
+            apiUrl = self.baseUrl.format(
+                location=&#34;receipts/{receipt}.json?token={token}&#34;.format(
+                    receipt=uc[&#34;receipt&#34;], token=self.app.token
+                )
+            )
+            rsp = self.session.get(apiUrl)
+            if rsp.status_code == 200:
+                data = json.loads(rsp.text)
+                if data[&#34;acknowledged&#34;] == True:
+                    confirmationDate = datetime.datetime.fromtimestamp(data[&#34;acknowledged_at&#34;])
+                    sql = &#34;UPDATE {dbTable} SET receipt_info = ?, confirmation = ? WHERE id = ?&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(
+                        sql,
+                        [
+                            json.dumps(data, indent=4),
+                            confirmationDate.strftime(&#34;%Y-%m-%d %H:%M:%S&#34;),
+                            uc[&#34;id&#34;],
+                        ],
+                    )
+                else:
+                    sql = &#34;UPDATE {dbTable} SET receipt_info = ? WHERE id = ?&#34;.format(
+                        dbTable=self.dbTable
+                    )
+                    self.db.fullExecute(sql, [json.dumps(data, indent=4), uc[&#34;id&#34;]])</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pushover.pushover.apiVersion"><code class="name">var <span class="ident">apiVersion</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.app"><code class="name">var <span class="ident">app</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.baseUrl"><code class="name">var <span class="ident">baseUrl</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.colNames"><code class="name">var <span class="ident">colNames</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.db"><code class="name">var <span class="ident">db</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.dbTable"><code class="name">var <span class="ident">dbTable</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.receipts"><code class="name">var <span class="ident">receipts</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.session"><code class="name">var <span class="ident">session</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.userAgent"><code class="name">var <span class="ident">userAgent</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.pushover.users"><code class="name">var <span class="ident">users</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pushover.pushover.addUser"><code class="name flex">
+<span>def <span class="ident">addUser</span></span>(<span>self, user_tkn, device=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add an user who should be informed</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addUser(self, user_tkn, device=None):
+    &#34;&#34;&#34;Add an user who should be informed&#34;&#34;&#34;
+    self.user.append(user(user(user_tkn, device)))</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.checkUnconfirmedPrio"><code class="name flex">
+<span>def <span class="ident">checkUnconfirmedPrio</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>When a DB is defined for Pushover client, this method should run on a reccuring period to fetch and update confirmation dates for PRIO 2 messages</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def checkUnconfirmedPrio(self):
+    &#34;&#34;&#34;When a DB is defined for Pushover client, this method should run on a reccuring period to fetch and update confirmation dates for PRIO 2 messages&#34;&#34;&#34;
+    sql = &#34;SELECT * FROM {dbTable} WHERE priority = 2 AND receipt IS NOT NULL AND confirmation IS NULL;&#34;.format(
+        dbTable=self.dbTable
+    )
+    self.db.startAction()
+    self.db.execute(sql)
+    allUnconfirmed = self.db.fetchallNamed()
+    self.db.close()
+    for uc in allUnconfirmed:
+        apiUrl = self.baseUrl.format(
+            location=&#34;receipts/{receipt}.json?token={token}&#34;.format(
+                receipt=uc[&#34;receipt&#34;], token=self.app.token
+            )
+        )
+        rsp = self.session.get(apiUrl)
+        if rsp.status_code == 200:
+            data = json.loads(rsp.text)
+            if data[&#34;acknowledged&#34;] == True:
+                confirmationDate = datetime.datetime.fromtimestamp(data[&#34;acknowledged_at&#34;])
+                sql = &#34;UPDATE {dbTable} SET receipt_info = ?, confirmation = ? WHERE id = ?&#34;.format(
+                    dbTable=self.dbTable
+                )
+                self.db.fullExecute(
+                    sql,
+                    [
+                        json.dumps(data, indent=4),
+                        confirmationDate.strftime(&#34;%Y-%m-%d %H:%M:%S&#34;),
+                        uc[&#34;id&#34;],
+                    ],
+                )
+            else:
+                sql = &#34;UPDATE {dbTable} SET receipt_info = ? WHERE id = ?&#34;.format(
+                    dbTable=self.dbTable
+                )
+                self.db.fullExecute(sql, [json.dumps(data, indent=4), uc[&#34;id&#34;]])</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.message"><code class="name flex">
+<span>def <span class="ident">message</span></span>(<span>self, message, user, title=None, priority=0, expire=None, retry=None, device=None, sound=None, url=None, url_title=None, attachment=None, timestamp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to publish a message per device</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def message(
+    self,
+    message,
+    user,
+    title=None,
+    priority=0,
+    expire=None,
+    retry=None,
+    device=None,
+    sound=None,
+    url=None,
+    url_title=None,
+    attachment=None,
+    timestamp=None,
+):
+    &#34;&#34;&#34;Method to publish a message per device&#34;&#34;&#34;
+    apiUrl = self.baseUrl.format(location=&#34;messages.json&#34;)
+
+    data = {&#34;token&#34;: self.app.token, &#34;user&#34;: user.token, &#34;message&#34;: message}
+
+    if title != None:
+        data[&#34;title&#34;] = title
+    if priority != 0:
+        data[&#34;priority&#34;] = priority
+        if expire == None:
+            expire = 10800  # maximum value: 10800
+        if retry == None:
+            retry = 60  # minimum value: 30
+    if expire != None:
+        data[&#34;expire&#34;] = expire
+    if retry != None:
+        data[&#34;retry&#34;] = retry
+    if device != None:
+        data[&#34;device&#34;] = device
+    if sound != None:
+        data[&#34;sound&#34;] = sound
+    if url != None:
+        data[&#34;url&#34;] = url
+    if url_title != None:
+        data[&#34;url_title&#34;] = url_title
+    if attachment != None:
+        data[&#34;attachment&#34;] = attachment
+    if timestamp != None:
+        data[&#34;timestamp&#34;] = timestamp
+
+    if self.db != None:
+        db_data = {}
+        for key in data:
+            if key in self.colNames:
+                db_data[key] = data[key]
+        sql = &#34;INSERT INTO {dbTable} ({colNames}) VALUES ({valPh});&#34;.format(
+            dbTable=self.dbTable,
+            colNames=&#34;, &#34;.join(db_data.keys()),
+            valPh=&#34;, &#34;.join([&#34;?&#34;] * len(db_data)),
+        )
+        self.db.fullExecute(sql, list(db_data.values()))
+        db_id = self.db.lastrowid()
+
+    rsp = self.session.post(
+        apiUrl, data=json.dumps(data), headers={&#34;content-type&#34;: &#34;application/json&#34;}
+    )
+
+    if self.db != None:
+        sql = &#34;UPDATE {dbTable} SET api_rc = ? WHERE id = ?;&#34;.format(dbTable=self.dbTable)
+        self.db.fullExecute(sql, [rsp.status_code, db_id])
+
+    if rsp.status_code == 200:
+        data = json.loads(rsp.text)
+        if self.db != None:
+            if &#34;receipt&#34; in data:
+                self.receipts.append(receipt(data[&#34;receipt&#34;], self.app.token))
+                sql = &#34;UPDATE {dbTable} SET receipt = ? WHERE id = ?;&#34;.format(
+                    dbTable=self.dbTable
+                )
+                self.db.fullExecute(sql, [data[&#34;receipt&#34;], db_id])</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.messageAll"><code class="name flex">
+<span>def <span class="ident">messageAll</span></span>(<span>self, message, title=None, priority=0, expire=None, retry=None, device=None, sound=None, url=None, url_title=None, attachment=None, timestamp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to send a message to all defined users</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def messageAll(
+    self,
+    message,
+    title=None,
+    priority=0,
+    expire=None,
+    retry=None,
+    device=None,
+    sound=None,
+    url=None,
+    url_title=None,
+    attachment=None,
+    timestamp=None,
+):
+    &#34;&#34;&#34;Method to send a message to all defined users&#34;&#34;&#34;
+    for user in self.users:
+        self.message(
+            message=message,
+            user=user,
+            title=title,
+            priority=2,
+            expire=expire,
+            retry=retry,
+            device=device,
+            sound=sound,
+            url=url,
+            url_title=url_title,
+            attachment=attachment,
+            timestamp=timestamp,
+        )</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.sendConfirmPrioMessage"><code class="name flex">
+<span>def <span class="ident">sendConfirmPrioMessage</span></span>(<span>self, message, title=None, expire=None, retry=None, device=None, sound=None, url=None, url_title=None, attachment=None, timestamp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use <code>messageAll</code> and send a prio message to all users, that has to be confirmed (high prio, prio 2)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendConfirmPrioMessage(
+    self,
+    message,
+    title=None,
+    expire=None,
+    retry=None,
+    device=None,
+    sound=None,
+    url=None,
+    url_title=None,
+    attachment=None,
+    timestamp=None,
+):
+    &#34;&#34;&#34;Use `messageAll` and send a prio message to all users, that has to be confirmed (high prio, prio 2)&#34;&#34;&#34;
+    self.messageAll(
+        message=message,
+        title=title,
+        priority=2,
+        expire=expire,
+        retry=retry,
+        device=device,
+        sound=sound,
+        url=url,
+        url_title=url_title,
+        attachment=attachment,
+        timestamp=timestamp,
+    )</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.sendMessage"><code class="name flex">
+<span>def <span class="ident">sendMessage</span></span>(<span>self, message, title=None, expire=None, retry=None, device=None, sound=None, url=None, url_title=None, attachment=None, timestamp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use <code>messageAll</code> and send a regular message to all users</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendMessage(
+    self,
+    message,
+    title=None,
+    expire=None,
+    retry=None,
+    device=None,
+    sound=None,
+    url=None,
+    url_title=None,
+    attachment=None,
+    timestamp=None,
+):
+    &#34;&#34;&#34;Use `messageAll` and send a regular message to all users&#34;&#34;&#34;
+    self.messageAll(
+        message=message,
+        title=title,
+        expire=expire,
+        retry=retry,
+        device=device,
+        sound=sound,
+        url=url,
+        url_title=url_title,
+        attachment=attachment,
+        timestamp=timestamp,
+    )</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.sendPrioMessage"><code class="name flex">
+<span>def <span class="ident">sendPrioMessage</span></span>(<span>self, message, title=None, expire=None, retry=None, device=None, sound=None, url=None, url_title=None, attachment=None, timestamp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use <code>messageAll</code> and send a prio message to all users (prio 1)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendPrioMessage(
+    self,
+    message,
+    title=None,
+    expire=None,
+    retry=None,
+    device=None,
+    sound=None,
+    url=None,
+    url_title=None,
+    attachment=None,
+    timestamp=None,
+):
+    &#34;&#34;&#34;Use `messageAll` and send a prio message to all users (prio 1)&#34;&#34;&#34;
+    self.messageAll(
+        message=message,
+        title=title,
+        priority=1,
+        expire=expire,
+        retry=retry,
+        device=device,
+        sound=sound,
+        url=url,
+        url_title=url_title,
+        attachment=attachment,
+        timestamp=timestamp,
+    )</code></pre>
+</details>
+</dd>
+<dt id="Pushover.pushover.setDB"><code class="name flex">
+<span>def <span class="ident">setDB</span></span>(<span>self, db=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
+Example of how such a Database object has to look like can be seen in <a href="https://macwinnie.github.io/py-sqlite3">macwinnie_sqlite3</a> which can seemlessly be used.
+ENV variable <code>PUSHOVER_SQLITE_FILENAME</code> (default <code>database.sqlite</code>) can be used to rename the default DB SQLite file.
+Database object needs to implement ability of usage of yoyo-migrations through method <code>migrate</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setDB(self, db=None):
+    &#34;&#34;&#34;Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
+    Example of how such a Database object has to look like can be seen in [macwinnie_sqlite3](https://macwinnie.github.io/py-sqlite3) which can seemlessly be used.
+    ENV variable `PUSHOVER_SQLITE_FILENAME` (default `database.sqlite`) can be used to rename the default DB SQLite file.
+    Database object needs to implement ability of usage of yoyo-migrations through method `migrate`.&#34;&#34;&#34;
+    dbMigrationPath = &#34;{}/{}&#34;.format(
+        os.path.dirname(os.path.abspath(__file__)), &#34;db_migrations&#34;
+    )
+    if db == None:
+        from macwinnie_sqlite3 import SQLite
+
+        self.db = macwinnie_sqlite3.SQLite(
+            &#34;{}/{}&#34;.format(
+                os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+            ),
+            dbMigrationPath,
+        )
+    else:
+        db.migrate(dbMigrationPath)
+        self.db = db
+    self.db.startAction()
+    sql = &#34;SELECT name FROM pragma_table_info( &#39;{dbTable}&#39; ) ORDER BY cid;&#34;.format(
+        dbTable=self.dbTable
+    )
+    self.db.execute(sql)
+    self.colNames = [n[0] for n in db.fetchall()]
+    self.db.close()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pushover.receipt"><code class="flex name class">
+<span>class <span class="ident">receipt</span></span>
+<span>(</span><span>receipt, app)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pushover receipt handling class</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class receipt:
+    &#34;&#34;&#34;Pushover receipt handling class&#34;&#34;&#34;
+
+    receipt = None
+    app = None
+    apiUrl = None
+    info = None
+
+    def __init__(self, receipt, app):
+        self.apiUrl = pushover.baseUrl.format(
+            location=&#34;receipts/{receipt}.json?token={app}&#34;.format(receipt=receipt, app=app)
+        )
+
+    def setInfo(self, data):
+        &#34;&#34;&#34;Decrypt and store JSON data from receipt&#34;&#34;&#34;
+        self.info = json.loads(data)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pushover.receipt.apiUrl"><code class="name">var <span class="ident">apiUrl</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.receipt.app"><code class="name">var <span class="ident">app</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.receipt.info"><code class="name">var <span class="ident">info</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.receipt.receipt"><code class="name">var <span class="ident">receipt</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pushover.receipt.setInfo"><code class="name flex">
+<span>def <span class="ident">setInfo</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decrypt and store JSON data from receipt</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setInfo(self, data):
+    &#34;&#34;&#34;Decrypt and store JSON data from receipt&#34;&#34;&#34;
+    self.info = json.loads(data)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pushover.user"><code class="flex name class">
+<span>class <span class="ident">user</span></span>
+<span>(</span><span>token, device=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pushover User class</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class user:
+    &#34;&#34;&#34;Pushover User class&#34;&#34;&#34;
+
+    token = None
+    devices = []
+
+    def __init__(self, token, device=None):
+        self.token = token
+        if device != None:
+            self.devices.append(device)
+
+    def addDevice(self, name):
+        &#34;&#34;&#34;Method that adds a device to an user&#34;&#34;&#34;
+        self.devices.appen(name)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pushover.user.devices"><code class="name">var <span class="ident">devices</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pushover.user.token"><code class="name">var <span class="ident">token</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pushover.user.addDevice"><code class="name flex">
+<span>def <span class="ident">addDevice</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method that adds a device to an user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDevice(self, name):
+    &#34;&#34;&#34;Method that adds a device to an user&#34;&#34;&#34;
+    self.devices.appen(name)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pushover.app" href="#Pushover.app">app</a></code></h4>
+<ul class="">
+<li><code><a title="Pushover.app.token" href="#Pushover.app.token">token</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pushover.device" href="#Pushover.device">device</a></code></h4>
+<ul class="">
+<li><code><a title="Pushover.device.name" href="#Pushover.device.name">name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pushover.pushover" href="#Pushover.pushover">pushover</a></code></h4>
+<ul class="">
+<li><code><a title="Pushover.pushover.addUser" href="#Pushover.pushover.addUser">addUser</a></code></li>
+<li><code><a title="Pushover.pushover.apiVersion" href="#Pushover.pushover.apiVersion">apiVersion</a></code></li>
+<li><code><a title="Pushover.pushover.app" href="#Pushover.pushover.app">app</a></code></li>
+<li><code><a title="Pushover.pushover.baseUrl" href="#Pushover.pushover.baseUrl">baseUrl</a></code></li>
+<li><code><a title="Pushover.pushover.checkUnconfirmedPrio" href="#Pushover.pushover.checkUnconfirmedPrio">checkUnconfirmedPrio</a></code></li>
+<li><code><a title="Pushover.pushover.colNames" href="#Pushover.pushover.colNames">colNames</a></code></li>
+<li><code><a title="Pushover.pushover.db" href="#Pushover.pushover.db">db</a></code></li>
+<li><code><a title="Pushover.pushover.dbTable" href="#Pushover.pushover.dbTable">dbTable</a></code></li>
+<li><code><a title="Pushover.pushover.message" href="#Pushover.pushover.message">message</a></code></li>
+<li><code><a title="Pushover.pushover.messageAll" href="#Pushover.pushover.messageAll">messageAll</a></code></li>
+<li><code><a title="Pushover.pushover.receipts" href="#Pushover.pushover.receipts">receipts</a></code></li>
+<li><code><a title="Pushover.pushover.sendConfirmPrioMessage" href="#Pushover.pushover.sendConfirmPrioMessage">sendConfirmPrioMessage</a></code></li>
+<li><code><a title="Pushover.pushover.sendMessage" href="#Pushover.pushover.sendMessage">sendMessage</a></code></li>
+<li><code><a title="Pushover.pushover.sendPrioMessage" href="#Pushover.pushover.sendPrioMessage">sendPrioMessage</a></code></li>
+<li><code><a title="Pushover.pushover.session" href="#Pushover.pushover.session">session</a></code></li>
+<li><code><a title="Pushover.pushover.setDB" href="#Pushover.pushover.setDB">setDB</a></code></li>
+<li><code><a title="Pushover.pushover.userAgent" href="#Pushover.pushover.userAgent">userAgent</a></code></li>
+<li><code><a title="Pushover.pushover.users" href="#Pushover.pushover.users">users</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pushover.receipt" href="#Pushover.receipt">receipt</a></code></h4>
+<ul class="">
+<li><code><a title="Pushover.receipt.apiUrl" href="#Pushover.receipt.apiUrl">apiUrl</a></code></li>
+<li><code><a title="Pushover.receipt.app" href="#Pushover.receipt.app">app</a></code></li>
+<li><code><a title="Pushover.receipt.info" href="#Pushover.receipt.info">info</a></code></li>
+<li><code><a title="Pushover.receipt.receipt" href="#Pushover.receipt.receipt">receipt</a></code></li>
+<li><code><a title="Pushover.receipt.setInfo" href="#Pushover.receipt.setInfo">setInfo</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pushover.user" href="#Pushover.user">user</a></code></h4>
+<ul class="">
+<li><code><a title="Pushover.user.addDevice" href="#Pushover.user.addDevice">addDevice</a></code></li>
+<li><code><a title="Pushover.user.devices" href="#Pushover.user.devices">devices</a></code></li>
+<li><code><a title="Pushover.user.token" href="#Pushover.user.token">token</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
