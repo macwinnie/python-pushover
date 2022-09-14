@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pushover client by @macwinnie</title>
+  </head>
+  <body>
+    <h1>Pushover client by <a target="_blank" href="https://twitter.com/macwinnie">@macwinnie</a></h1>
+    <p>
+            This is the documentation overview for Pushover client by <a target="_blank" href="https://twitter.com/macwinnie">@macwinnie</a>.
+        </p>
+    <p>
+        To install this package, please run:<br/><br/>
+        <pre>
+            pip install macwinnie_py_pushover_client
+        </pre>
+    </p>
+    <p>
+        Usage could then e.g. be:
+        <pre>
+            from macwinnie_py_pushover_client import Pushover
+
+            po = Pushover.pushover()
+            po.setDB()
+
+            po.messageAll( 'This is a demonstration message.' )
+        </pre>
+    </p>
+    <p>
+        You need to define some environmental variables. That could be within a <code>.env</code> file and load by <a target="_blank" href="https://pypi.org/project/python-dotenv/">python-dotenv</a>:
+        <pre>
+            PUSHOVER_APP=<app_token_from_pushover_website>
+            PUSHOVER_USERS=["<user_token_1>","<user_token_2>"]
+        </pre>
+    </p>
+    <p>
+            The Sourcecode of the package can be found on <a target="_blank" href="https://github.com/macwinnie/python-pushover">GitHub</a>, the documentation you currently are reading can be found at <a href="https://macwinnie.github.io/python-pushover/">GitHub Pages</a> and was last updated on <span id="update_date"></span>.
+        </p>
+    <p>
+            Feel free to inspect the specific module documentations:
+            <ul id="doc_list"></ul>
+        </p>
+  </body>
+</html>
