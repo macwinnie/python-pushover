@@ -110,7 +110,7 @@ class pushover:
         if db == None:
             from macwinnie_sqlite3 import SQLite
 
-            self.db = SQLite(
+            self.db = SQLite.database(
                 "{}/{}".format(
                     os.getcwd(), os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite")
                 ),
