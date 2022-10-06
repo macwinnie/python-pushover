@@ -50,7 +50,9 @@ class receipt:
 
     def __init__(self, receipt, app):
         self.apiUrl = pushover.baseUrl.format(
-            location="receipts/{receipt}.json?token={app}".format(receipt=receipt, app=app)
+            location="receipts/{receipt}.json?token={app}".format(
+                receipt=receipt, app=app
+            )
         )
 
     def setInfo(self, data):
@@ -112,7 +114,8 @@ class pushover:
 
             self.db = SQLite.database(
                 "{}/{}".format(
-                    os.getcwd(), os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite")
+                    os.getcwd(),
+                    os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite"),
                 ),
                 dbMigrationPath,
             )
@@ -308,7 +311,9 @@ class pushover:
         )
 
         if self.db != None:
-            sql = "UPDATE {dbTable} SET api_rc = ? WHERE id = ?;".format(dbTable=self.dbTable)
+            sql = "UPDATE {dbTable} SET api_rc = ? WHERE id = ?;".format(
+                dbTable=self.dbTable
+            )
             self.db.fullExecute(sql, [rsp.status_code, db_id])
 
         if rsp.status_code == 200:
@@ -340,7 +345,9 @@ class pushover:
             if rsp.status_code == 200:
                 data = json.loads(rsp.text)
                 if data["acknowledged"] == True:
-                    confirmationDate = datetime.datetime.fromtimestamp(data["acknowledged_at"])
+                    confirmationDate = datetime.datetime.fromtimestamp(
+                        data["acknowledged_at"]
+                    )
                     sql = "UPDATE {dbTable} SET receipt_info = ?, confirmation = ? WHERE id = ?".format(
                         dbTable=self.dbTable
                     )
