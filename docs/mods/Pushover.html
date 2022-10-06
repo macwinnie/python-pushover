@@ -139,7 +139,7 @@ class pushover:
         if db == None:
             from macwinnie_sqlite3 import SQLite
 
-            self.db = SQLite(
+            self.db = SQLite.database(
                 &#34;{}/{}&#34;.format(
                     os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
                 ),
@@ -514,7 +514,7 @@ class pushover:
         if db == None:
             from macwinnie_sqlite3 import SQLite
 
-            self.db = SQLite(
+            self.db = SQLite.database(
                 &#34;{}/{}&#34;.format(
                     os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
                 ),
@@ -1131,7 +1131,7 @@ Database object needs to implement ability of usage of yoyo-migrations through m
     if db == None:
         from macwinnie_sqlite3 import SQLite
 
-        self.db = SQLite(
+        self.db = SQLite.database(
             &#34;{}/{}&#34;.format(
                 os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
             ),

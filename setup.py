@@ -28,7 +28,9 @@ setup(
     ],
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">={pyVersion}".format(pyVersion=pf["_meta"]["requires"]["python_version"]),
+    python_requires=">={pyVersion}".format(
+        pyVersion=pf["_meta"]["requires"]["python_version"]
+    ),
     install_requires=[
         "{package}{version}".format(package=p, version=v) if v != "*" else p
         for p, v in pf["default"].items()
@@ -39,4 +41,5 @@ setup(
             for p, v in pf["develop"].items()
         ],
     },
+    include_package_data=True,
 )
