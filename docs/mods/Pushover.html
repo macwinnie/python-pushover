@@ -154,7 +154,7 @@ class pushover:
             dbTable=self.dbTable
         )
         self.db.execute(sql)
-        self.colNames = [n[0] for n in db.fetchall()]
+        self.colNames = [n[0] for n in self.db.fetchall()]
         self.db.close()
 
     def addUser(self, user_tkn, device=None):
@@ -530,7 +530,7 @@ class pushover:
             dbTable=self.dbTable
         )
         self.db.execute(sql)
-        self.colNames = [n[0] for n in db.fetchall()]
+        self.colNames = [n[0] for n in self.db.fetchall()]
         self.db.close()
 
     def addUser(self, user_tkn, device=None):
@@ -1148,7 +1148,7 @@ Database object needs to implement ability of usage of yoyo-migrations through m
         dbTable=self.dbTable
     )
     self.db.execute(sql)
-    self.colNames = [n[0] for n in db.fetchall()]
+    self.colNames = [n[0] for n in self.db.fetchall()]
     self.db.close()</code></pre>
 </details>
 </dd>
