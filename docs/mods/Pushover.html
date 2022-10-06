@@ -141,7 +141,8 @@ class pushover:
 
             self.db = SQLite.database(
                 &#34;{}/{}&#34;.format(
-                    os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+                    os.getcwd(),
+                    os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;),
                 ),
                 dbMigrationPath,
             )
@@ -516,7 +517,8 @@ class pushover:
 
             self.db = SQLite.database(
                 &#34;{}/{}&#34;.format(
-                    os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+                    os.getcwd(),
+                    os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;),
                 ),
                 dbMigrationPath,
             )
@@ -1133,7 +1135,8 @@ Database object needs to implement ability of usage of yoyo-migrations through m
 
         self.db = SQLite.database(
             &#34;{}/{}&#34;.format(
-                os.getcwd(), os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;)
+                os.getcwd(),
+                os.getenv(&#34;PUSHOVER_SQLITE_FILENAME&#34;, &#34;database.sqlite&#34;),
             ),
             dbMigrationPath,
         )

@@ -11,6 +11,14 @@ j = json.load(f)
 build_version = j["version"]
 f.close()
 
+packages = find_packages(where="src")
+padds = []
+for p in packages:
+    pre = "src/"
+    d = pre + p
+    x = filter(os.path.isdir, [os.path.join(d, f) for f in os.listdir(d)])
+    padds += [p.lstrip(pre).replace("/", ".") for p in x]
+
 setup(
     name="macwinnie_py_pushover_client",
     version=build_version,
@@ -27,7 +35,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
-    packages=find_packages(where="src"),
+    packages=packages + padds,
     python_requires=">={pyVersion}".format(
         pyVersion=pf["_meta"]["requires"]["python_version"]
     ),
