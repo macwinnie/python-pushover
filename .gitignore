@@ -4,3 +4,9 @@ __pycache__
 .env
 *.DS_*
 ._*
+.venv*
+.coverage
+*.log
+.github.push.version
+.pytest_cache
+*.pickle

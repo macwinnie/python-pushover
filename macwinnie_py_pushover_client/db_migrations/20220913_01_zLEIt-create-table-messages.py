@@ -4,7 +4,6 @@ CREATE TABLE messages
 
 # Using [yoyo-migrations](https://pypi.org/project/yoyo-migrations/) – has to
 # be executed on DB initiating like in [macwinnie_sqlite3](https://macwinnie.github.io/py-sqlite3)
-
 from yoyo import step
 
 __depends__ = {}

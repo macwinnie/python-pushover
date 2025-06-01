@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-
 """Pushover Client installable by `pip install macwinnie_py_pushover_client`"""
+import datetime
+import json
+import os
+import pathlib
 
-import requests, os, json, datetime, pathlib
+import requests
 
 
 class device:
@@ -50,7 +53,9 @@ class receipt:
 
     def __init__(self, receipt, app):
         self.apiUrl = pushover.baseUrl.format(
-            location="receipts/{receipt}.json?token={app}".format(receipt=receipt, app=app)
+            location="receipts/{receipt}.json?token={app}".format(
+                receipt=receipt, app=app
+            )
         )
 
     def setInfo(self, data):
@@ -59,7 +64,12 @@ class receipt:
 
 
 class pushover:
-    """Class that handles Pushover actions"""
+    """
+    Class that handles Pushover actions.
+
+    By default at instantiation, `user_tkn` is `None` which will either fetch `PUSHOVER_USERS` environmental variable or ask for users input.
+    To skip adding users at creation, set to `False` instead!
+    """
 
     session = None
     userAgent = "curl/7.54"
@@ -87,9 +97,9 @@ class pushover:
             if app_tkn == None:
                 app_tkn = input("{d}: ".format(d="Input your API token: "))
             self.app = app(app_tkn)
-        if user_tkn != None:
+        if user_tkn != None and user_tkn != False:
             self.users.append(user_tkn)
-        else:
+        elif user_tkn != False:
             user_tkn = os.getenv("PUSHOVER_USERS")
             if user_tkn == None:
                 user_tkn = input("{d}: ".format(d="Input your User token: "))
@@ -100,10 +110,12 @@ class pushover:
                     self.users.append(user(u))
 
     def setDB(self, db=None):
-        """Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
+        """
+        Define a Database object to interact with, store sent messages and cofirmation dates fetched from Pushover.
         Example of how such a Database object has to look like can be seen in [macwinnie_sqlite3](https://macwinnie.github.io/py-sqlite3) which can seemlessly be used.
-        ENV variable `PUSHOVER_SQLITE_FILENAME` (default `database.sqlite`) can be used to rename the default DB SQLite file.
-        Database object needs to implement ability of usage of yoyo-migrations through method `migrate`."""
+        ENV variable `PUSHOVER_SQLITE_FILENAME` (default `database.sqlite`, relative to working dir!) can be used to rename the default DB SQLite file.
+        Database object needs to implement ability of usage of yoyo-migrations through method `migrate`.
+        """
         dbMigrationPath = "{}/{}".format(
             os.path.dirname(os.path.abspath(__file__)), "db_migrations"
         )
@@ -309,7 +321,9 @@ class pushover:
         )
 
         if self.db != None:
-            sql = "UPDATE {dbTable} SET api_rc = ? WHERE id = ?;".format(dbTable=self.dbTable)
+            sql = "UPDATE {dbTable} SET api_rc = ? WHERE id = ?;".format(
+                dbTable=self.dbTable
+            )
             self.db.fullExecute(sql, [rsp.status_code, db_id])
 
         if rsp.status_code == 200:
@@ -341,7 +355,9 @@ class pushover:
             if rsp.status_code == 200:
                 data = json.loads(rsp.text)
                 if data["acknowledged"] == True:
-                    confirmationDate = datetime.datetime.fromtimestamp(data["acknowledged_at"])
+                    confirmationDate = datetime.datetime.fromtimestamp(
+                        data["acknowledged_at"]
+                    )
                     sql = "UPDATE {dbTable} SET receipt_info = ?, confirmation = ? WHERE id = ?".format(
                         dbTable=self.dbTable
                     )

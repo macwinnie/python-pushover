@@ -1,1 +1,0 @@
-macwinnie_py_pushover_client

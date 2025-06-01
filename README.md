@@ -1,6 +1,6 @@
 # Pushover Python Client
 
-This repository is a pyhton PIP module to realize Pushover messaging.
+This toolset allows you to send [Pushover notifications](https://pushover.net/) from your Python project.
 
 ## Versioning
 
