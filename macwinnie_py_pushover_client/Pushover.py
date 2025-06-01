@@ -67,7 +67,10 @@ class pushover:
     """
 
     userAgent = "curl/7.54"
+
     apiVersion = 1
+    baseUrl = "https://api.pushover.net/{version}/".format(version=str(apiVersion))
+    baseUrl += "{location}"
 
     def __init__(self, app_tkn=None, user_tkn=None):
         """ENV variables `PUSHOVER_APP` (API token) and `PUSHOVER_USERS` (JSON List of User token like `["asdfghj123456", "yxcvbnm098765"]`) can be used."""
@@ -75,11 +78,6 @@ class pushover:
         self.db = None
         self.colNames = None
         self.dbTable = "po_messages"
-
-        self.baseUrl = "https://api.pushover.net/{version}/".format(
-            version=str(self.apiVersion)
-        )
-        self.baseUrl += "{location}"
 
         self.app = None
         self.users = []
