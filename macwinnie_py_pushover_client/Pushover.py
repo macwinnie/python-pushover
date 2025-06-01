@@ -76,7 +76,9 @@ class pushover:
         self.colNames = None
         self.dbTable = "po_messages"
 
-        self.baseUrl = "https://api.pushover.net/{version}/".format(version=str(apiVersion))
+        self.baseUrl = "https://api.pushover.net/{version}/".format(
+            version=str(apiVersion)
+        )
         self.baseUrl += "{location}"
 
         self.app = None
