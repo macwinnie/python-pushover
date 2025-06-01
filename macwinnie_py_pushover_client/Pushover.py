@@ -142,7 +142,7 @@ class pushover:
 
     def addUser(self, user_tkn, device=None):
         """Add an user who should be informed"""
-        self.user.append(user(user(user_tkn, device)))
+        self.users.append(user(user_tkn, device))
 
     def messageAll(
         self,
