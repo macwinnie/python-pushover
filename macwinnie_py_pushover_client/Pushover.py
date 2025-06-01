@@ -11,8 +11,6 @@ import requests
 class device:
     """Pushover Device"""
 
-    name = None
-
     def __init__(self, name):
         self.name = name
 
@@ -20,10 +18,8 @@ class device:
 class user:
     """Pushover User class"""
 
-    token = None
-    devices = []
-
     def __init__(self, token, device=None):
+        self.devices = []
         self.token = token
         if device != None:
             self.devices.append(device)
@@ -36,8 +32,6 @@ class user:
 class app:
     """Pushover App class"""
 
-    token = None
-
     def __init__(self, token):
         """Each App that wants to send a Pushover Notification has to be registered and get an official token."""
         self.token = token
@@ -46,12 +40,13 @@ class app:
 class receipt:
     """Pushover receipt handling class"""
 
-    receipt = None
-    app = None
-    apiUrl = None
-    info = None
-
     def __init__(self, receipt, app):
+
+        self.receipt = None
+        self.app = None
+        self.apiUrl = None
+        self.info = None
+
         self.apiUrl = pushover.baseUrl.format(
             location="receipts/{receipt}.json?token={app}".format(
                 receipt=receipt, app=app
@@ -71,23 +66,23 @@ class pushover:
     To skip adding users at creation, set to `False` instead!
     """
 
-    session = None
     userAgent = "curl/7.54"
-
-    db = None
-    colNames = None
-    dbTable = "po_messages"
-
     apiVersion = 1
-    baseUrl = "https://api.pushover.net/{version}/".format(version=str(apiVersion))
-    baseUrl += "{location}"
-
-    app = None
-    users = []
-    receipts = []
 
     def __init__(self, app_tkn=None, user_tkn=None):
         """ENV variables `PUSHOVER_APP` (API token) and `PUSHOVER_USERS` (JSON List of User token like `["asdfghj123456", "yxcvbnm098765"]`) can be used."""
+
+        self.db = None
+        self.colNames = None
+        self.dbTable = "po_messages"
+
+        self.baseUrl = "https://api.pushover.net/{version}/".format(version=str(apiVersion))
+        self.baseUrl += "{location}"
+
+        self.app = None
+        self.users = []
+        self.receipts = []
+
         self.session = requests.session()
         self.session.headers = {"User-Agent": self.userAgent}
         if app_tkn != None:
