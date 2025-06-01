@@ -52,9 +52,9 @@ mkdir -p "${docPath}"
 # write out documentation for all python classes in src folder
 pdoc macwinnie_py_pushover_client --docformat google --output-dir "${docPath}"
 
-# #  update index page of documentation by current date and author information
-# chmod a+x wf_adjust_pdoc.py
-# python wf_adjust_pdoc.py
+#  update index page of documentation by current date and author information
+chmod a+x wf_adjust_pdoc.py
+python wf_adjust_pdoc.py
 
 cd "${curPath}"
 
