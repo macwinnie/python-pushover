@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "macwinnie-py-pushover-client"
-version = "2.0.4"
+version = "2.0.5"
 description = "Pushover client for Python projects."
 authors = ["macwinnie <dev@macwinnie.me>"]
 license = "GNU AFFERO GENERAL PUBLIC LICENSE"
