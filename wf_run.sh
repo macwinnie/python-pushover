@@ -25,7 +25,7 @@ apt update
 apt upgrade -y
 apt install -y \
     virtualenv \
-    python3-dev python3-wheel python3-distutils
+    python3-dev python3-wheel
 
 # enable local venv
 # shellcheck disable=SC1091

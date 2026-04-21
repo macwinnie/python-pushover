@@ -26,7 +26,7 @@ jobs:
     steps:
 
       - name: "Checkout this repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v6"
         with:
           ref: "master"
           path: "${{ env.WD_PATH }}"
@@ -43,7 +43,7 @@ jobs:
           cat .github.push.version >> $GITHUB_OUTPUT
 
       - name: "Import GPG key from secrets"
-        uses: "crazy-max/ghaction-import-gpg@v6"
+        uses: "crazy-max/ghaction-import-gpg@v7"
         with:
           gpg_private_key: "${{ secrets.GPG_PRIVATE_KEY }}"
           passphrase: "${{ secrets.GPG_PASS }}"
@@ -52,7 +52,7 @@ jobs:
           workdir: "./${{ env.WD_PATH }}"
 
       - name: "Publish Git repository with last built state"
-        uses: "stefanzweifel/git-auto-commit-action@v4"
+        uses: "stefanzweifel/git-auto-commit-action@v7"
         with:
           commit_message:    "Publish currently built version ${{ steps.build_package.outputs.versiontag }}"
           commit_user_name:  "GitHub Actions"

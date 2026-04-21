@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Pushover Client installable by `pip install macwinnie_py_pushover_client`"""
+
 import datetime
 import json
 import os
@@ -117,11 +118,11 @@ class pushover:
         if db == None:
             from macwinnie_sqlite3 import SQLite
 
+            envPath = Path(os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite"))
+            sqlitePath = str(path if path.is_absolute() else Path.cwd() / path)
+
             self.db = SQLite.database(
-                "{}/{}".format(
-                    os.getcwd(),
-                    os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite"),
-                ),
+                sqlitePath,
                 dbMigrationPath,
             )
         else:
