@@ -5,6 +5,7 @@ import datetime
 import json
 import os
 import pathlib
+from pathlib import Path
 
 import requests
 
@@ -119,7 +120,7 @@ class pushover:
             from macwinnie_sqlite3 import SQLite
 
             envPath = Path(os.getenv("PUSHOVER_SQLITE_FILENAME", "database.sqlite"))
-            sqlitePath = str(path if path.is_absolute() else Path.cwd() / path)
+            sqlitePath = str(envPath if envPath.is_absolute() else Path.cwd() / envPath)
 
             self.db = SQLite.database(
                 sqlitePath,
