@@ -946,14 +946,14 @@ csv = ["pandas (>=2.1.2,<3.0.0)"]
 
 [[package]]
 name = "macwinnie-sqlite3"
-version = "1.0.2"
+version = "1.1.1"
 description = "Pushover client for Python projects."
 optional = false
-python-versions = ">=3.10"
+python-versions = ">=3.13"
 groups = ["main"]
 files = [
-    {file = "macwinnie_sqlite3-1.0.2-py3-none-any.whl", hash = "sha256:d330286e5d3dc51e2b83705907dd60555cf23a5777e266a24dc915b256d42cba"},
-    {file = "macwinnie_sqlite3-1.0.2.tar.gz", hash = "sha256:b32fb856cc0d81b95661b730945de9b5208bf8126bb73f7957d1be05fd0f6208"},
+    {file = "macwinnie_sqlite3-1.1.1-py3-none-any.whl", hash = "sha256:716e8b51db9a24f589ac7005aeb580ef7b92963f414aa53e99008bc6a2e5c54e"},
+    {file = "macwinnie_sqlite3-1.1.1.tar.gz", hash = "sha256:a1f9fd9d5a523195dca4b281ef60ca17aa01560988743e627e70648830e635db"},
 ]
 
 [package.dependencies]
@@ -1756,4 +1756,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13,<4"
-content-hash = "09b00d0a6553029b82c580796d974de418d662dc11c74c4a15f230b253826e1c"
+content-hash = "61758cbf02664320f55ed81ff213214aa9f91df82d646cfe47807cd4faf92eab"
